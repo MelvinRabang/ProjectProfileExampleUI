@@ -1,0 +1,80 @@
+<div class="project-profile-search">
+  <div class="position-proj-profile-search-title">
+    <h1 class="proj-profile-search-title">
+      <strong>PROJECT PROFILE SEARCH</strong>
+    </h1>
+  </div>
+  <div class="search-criteria-title-position">
+    <h3 class="search-criteria-title">
+      <strong>Search Criteria :</strong>
+    </h3>
+  </div>
+  <div>
+    <form [formGroup]="projectProfileSearchFormGroup" (ngSubmit)="searchButtonAction(projectProfileSearchFormGroup.value)">
+      <div>
+        <div class="form-group">
+          <input type="input" class="form-control inputSize" id="projectName" placeholder="Project Name"
+            [formControl] = "projectProfileSearchFormGroup.controls['projectProfileName']">
+        </div>
+        <div class="form-group">
+          <input type="input" class="form-control inputSize" id="subteamName" placeholder="Sub-Team Name"
+            [formControl] = "projectProfileSearchFormGroup.controls['projectProfileSubTeamName']">
+        </div>
+        <div class="form-group">
+          <input type="input" class="form-control inputSize" id="deliveryLead" placeholder="Delivery Lead"
+            [formControl] = "projectProfileSearchFormGroup.controls['projectProfileDeliveryLead']">
+        </div>
+        <div class="form-group">
+          <input type="input" class="form-control inputSize" id="projectLocation" placeholder="Project Location"
+            [formControl] = "projectProfileSearchFormGroup.controls['projectProfileProjectLocation']">
+        </div>
+        <div class="form-group">
+          <input type="input" class="form-control inputSize" id="industryGroup" placeholder="Industry Group"
+            [formControl] = "projectProfileSearchFormGroup.controls['projectProfileIndustryGroup']">
+        </div>
+        <div class="form-group">
+          <input type="input" class="form-control inputSize" id="seniorExec" placeholder="Senior Exec"
+            [formControl] = "projectProfileSearchFormGroup.controls['projectProfileSeniorExec']">
+        </div>
+      </div>
+      <div class="buttons-position">
+          <input type="button" class="btn btn-default buttonLength" value="Add New" (click)="addButtonAction()"/>
+          <input type="submit" class="btn btn-default buttonLength" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="search-results-title-position">
+    <h3 class="search-results-title">
+      <strong>Search Results :</strong>
+    </h3>
+  </div>
+  <div>
+      <p-dataTable [value]="projectProfiles" emptyMessage="">
+        <p-column field="projectProfileName" header="Project Name">
+          <template let-row="rowData" pTemplate type="body" >
+            <p class="positionProjProfileName" (click)="openProjectProfileEditScreen(row)"><strong>{{row.projectProfileName}}</strong></p>
+          </template>
+        </p-column>
+        <p-column field="projectProfileSubTeamName" header="Sub-Team Name"></p-column>
+        <p-column field="projectProfileDeliveryLead" header="Delivery Lead"></p-column>
+        <p-column field="projectProfileProjectLocation" header="Project Location"></p-column>
+        <p-column field="projectProfileIndustryGroup" header="Industry Group"></p-column>
+        <p-column field="projectProfileSeniorExec" header="Senior Exec"></p-column>
+      </p-dataTable>
+  </div>
+</div>
+<project-profile-add-and-update *ngIf="isProjProfileAddAppear" (messageClick)="receiveMessage($event)">
+</project-profile-add-and-update>
+<project-profile-edit *ngIf="isProjProfileEditAppear && editProfile" (editCloseMessageClick)="receiveEditCloseMessage($event)" [editProfile]=editProfile >
+</project-profile-edit>
+<div class="modal fade show in" role="dialog" *ngIf="isInvalidProjectProfilePopupAppear">
+  <div class="modal-dialog">
+    <div class="modal-content positionInvalidProjectProfilePopup">
+      <div class="modal-body settingPopupHeight search-profile-buttons-position">
+        <p>Error - Invalid input or the project profile you entered does not exist. Please enter correct search project profile input.</p>
+        <input type="button" class="btn btn-default popupButtonLength" value="OK" (click)="closeInvalidProjectProfilePopUp()"/>
+      </div>
+    </div>
+  </div>
+</div>
+

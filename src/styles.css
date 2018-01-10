@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+.body-background {
+    background-color: #759B84;
+}
+
+.buttonLength {
+    width: 8%;
+}
+
+.positionInvalidProjectProfilePopup {
+    margin-top: 50%;
+    margin-left: 24%;
+    margin-right: 26%;
+}
+
+.popupButtonLength {
+    width: 50%;
+}
+
+.settingPopupHeight {
+    padding-top: 5vh;
+}
+
+.addscreeninputsize {
+    width: 20%;
+    margin-left: 39.7%;
+}
+
+.contact-details-title {
+    color: #C3E4ED;
+}
+  
+.contact-details-title-position {
+    margin-top: 2%;
+    margin-left: -1%;
+    width: 102%;
+    background-color: #42647F;
+}

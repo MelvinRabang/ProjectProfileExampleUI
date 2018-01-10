@@ -1,0 +1,49 @@
+.project-profile-search {
+    background-color: #759B84;
+    position: relative;
+}
+
+.proj-profile-search-title {
+    text-align: center;
+    color: blue;
+}
+
+.position-proj-profile-search-title {
+    margin-top: 4%;
+}
+
+.search-criteria-title-position {
+    margin-top: 2%;
+    background-color: #7B3F00;
+}
+
+.search-criteria-title {
+    color: #E8F1D4;
+}
+
+.search-results-title-position {
+    margin-top: 2%;
+    background-color: #660033;
+}
+
+.search-results-title {
+    color: #E8F1D4;
+}
+
+.inputSize {
+    width: 20%;
+    margin-left: 39.7%;
+}
+
+.buttons-position {
+    text-align: center;
+}
+
+.search-profile-buttons-position {
+    text-align: center;
+}
+
+.positionProjProfileName {
+    color: blue;
+    margin-bottom: -1%;
+}

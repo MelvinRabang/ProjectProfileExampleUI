@@ -1,0 +1,85 @@
+<div class="modal fade show in" id="myModal" role="dialog">
+  <div class="modal-dialog project-profile-add-modal-dialog">
+    <div class="modal-content project-profile-add-modal-content">
+      <div class="modal-body">
+        <div class="position-proj-profile-add-title">
+          <h1 class="proj-profile-add-title">
+            <strong>PROJECT PROFILE MAINTENANCE</strong>
+          </h1>
+        </div>
+        <div class="profile-info-title-position">
+          <h3 class="profile-info-title">
+            <strong>Profile Info :</strong>
+          </h3>
+        </div>
+        <div>
+          <form [formGroup]="projectProfileUpdateFormGroup">
+            <div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="projectName" placeholder="Project Name"
+                  [formControl] = "projectProfileUpdateFormGroup.controls['projectProfileName']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="subteamName" placeholder="Sub-Team Name"
+                  [formControl] = "projectProfileUpdateFormGroup.controls['projectProfileSubTeamName']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="industryGroup" placeholder="Industry Group"
+                  [formControl] = "projectProfileUpdateFormGroup.controls['projectProfileIndustryGroup']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="seniorExec" placeholder="Senior Exec"
+                  [formControl] = "projectProfileUpdateFormGroup.controls['projectProfileSeniorExec']">
+              </div>
+              <div class="contact-details-title-position">
+                <h3 class="contact-details-title">
+                  <strong>Contact Details :</strong>
+                </h3>
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="deliveryLead" placeholder="Delivery Lead"
+                  [formControl] = "projectProfileUpdateFormGroup.controls['projectProfileDeliveryLead']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="firstPointOfContact" placeholder="1st Point of Contact EID"
+                  [formControl] = "projectProfileUpdateFormGroup.controls['projectProfileFirstPointContact']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="secondPointOfContact" placeholder="2nd Point of Contact EID"
+                  [formControl] = "projectProfileUpdateFormGroup.controls['projectProfileSecondPointContact']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="projectLocation" placeholder="Project Location"
+                  [formControl] = "projectProfileUpdateFormGroup.controls['projectProfileProjectLocation']">
+              </div>
+              <div class="add-profile-buttons-position">
+                <input type="submit" class="btn btn-default buttonLength" value="Save" (click)="saveProjectProfile(projectProfileUpdateFormGroup.value)"/>
+                <input type="button" class="btn btn-default buttonLength" value="Close" (click)="closeAddAndUpdateProjProfile()"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade show in" role="dialog" *ngIf="isInvalidProjectProfilePopupAppear">
+  <div class="modal-dialog">
+    <div class="modal-content positionInvalidProjectProfilePopup">
+      <div class="modal-body settingPopupHeight add-profile-buttons-position">
+        <p>Error - Invalid input or the project profile you entered already exists. Please enter correct input or add another project profile.</p>
+        <input type="button" class="btn btn-default popupButtonLength" value="OK" (click)="closeInvalidProjectProfilePopUp()"/>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade show in" role="dialog" *ngIf="isValidProjectProfilePopupAppear">
+  <div class="modal-dialog">
+    <div class="modal-content positionInvalidProjectProfilePopup">
+      <div class="modal-body settingPopupHeight add-profile-buttons-position">
+        <p>Project Profile successfully saved.</p>
+        <input type="button" class="btn btn-default popupButtonLength" value="OK" (click)="closeValidProjectProfilePopUp()"/>
+      </div>
+    </div>
+  </div>
+</div>

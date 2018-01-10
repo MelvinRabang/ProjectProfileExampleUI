@@ -1,0 +1,106 @@
+<div class="modal fade show in" id="myModal" role="dialog">
+  <div class="modal-dialog project-profile-edit-modal-dialog">
+    <div class="modal-content project-profile-edit-modal-content">
+      <div class="modal-body">
+        <div class="position-proj-profile-edit-title">
+          <h1 class="proj-profile-edit-title">
+            <strong>PROJECT PROFILE MAINTENANCE</strong>
+          </h1>
+        </div>
+        <div class="profile-info-title-position">
+          <h3 class="profile-info-title">
+            <strong>Profile Info :</strong>
+          </h3>
+        </div>
+        <div>
+          <form [formGroup]="projectProfileEditFormGroup">
+            <div>
+              <div class="form-group">
+                <input type="input" [attr.disabled]='true' class="form-control addscreeninputsize" id="projectName" placeholder="Project Name"
+                  [formControl] = "projectProfileEditFormGroup.controls['projectProfileName']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="subteamName" placeholder="Sub-Team Name"
+                  [formControl] = "projectProfileEditFormGroup.controls['projectProfileSubTeamName']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="industryGroup" placeholder="Industry Group"
+                  [formControl] = "projectProfileEditFormGroup.controls['projectProfileIndustryGroup']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="seniorExec" placeholder="Senior Exec"
+                  [formControl] = "projectProfileEditFormGroup.controls['projectProfileSeniorExec']">
+              </div>
+              <div class="contact-details-title-position">
+                <h3 class="contact-details-title">
+                  <strong>Contact Details :</strong>
+                </h3>
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="deliveryLead" placeholder="Delivery Lead"
+                  [formControl] = "projectProfileEditFormGroup.controls['projectProfileDeliveryLead']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="firstPointOfContact" placeholder="1st Point of Contact EID"
+                  [formControl] = "projectProfileEditFormGroup.controls['projectProfileFirstPointContact']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="secondPointOfContact" placeholder="2nd Point of Contact EID"
+                  [formControl] = "projectProfileEditFormGroup.controls['projectProfileSecondPointContact']">
+              </div>
+              <div class="form-group">
+                <input type="input" class="form-control addscreeninputsize" id="projectLocation" placeholder="Project Location"
+                  [formControl] = "projectProfileEditFormGroup.controls['projectProfileProjectLocation']">
+              </div>
+              <div class="add-profile-buttons-position">
+                <input type="submit" class="btn btn-default buttonLength" value="Save" (click)="updateProjectProfile(projectProfileEditFormGroup.value)"/>
+                <input type="submit" class="btn btn-default buttonLength" value="Delete" (click)="deleteProjectProfile(projectProfileEditFormGroup.value)"/>
+                <input type="button" class="btn btn-default buttonLength" value="Close" (click)="closeEditProjProfile()"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade show in" role="dialog" *ngIf="isInvalidDeleteProjectProfilePopupAppear">
+  <div class="modal-dialog">
+    <div class="modal-content positionInvalidProjectProfilePopup">
+      <div class="modal-body settingPopupHeight add-profile-buttons-position">
+        <p>Error - Deleted Project Profile should be the same as original Project Profile. Please revert to original Project Project input values.</p>
+        <input type="button" class="btn btn-default popupButtonLength" value="OK" (click)="closeInvalidDeleteProjectProfilePopUp()"/>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade show in" role="dialog" *ngIf="isValidDeleteProjectProfilePopupAppear">
+  <div class="modal-dialog">
+    <div class="modal-content positionInvalidProjectProfilePopup">
+      <div class="modal-body settingPopupHeight add-profile-buttons-position">
+        <p>Project Profile has been successfully deleted.</p>
+        <input type="button" class="btn btn-default popupButtonLength" value="OK" (click)="closeValidDeleteProjectProfilePopUp()"/>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade show in" role="dialog" *ngIf="isInvalidUpdateProjectProfilePopupAppear">
+  <div class="modal-dialog">
+    <div class="modal-content positionInvalidProjectProfilePopup">
+      <div class="modal-body settingPopupHeight add-profile-buttons-position">
+        <p>Error - Updated Project Profile should be the same as original Project Profile. Please revert to original Project Project input values.</p>
+        <input type="button" class="btn btn-default popupButtonLength" value="OK" (click)="closeInvalidUpdateProjectProfilePopUp()"/>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade show in" role="dialog" *ngIf="isValidUpdateProjectProfilePopupAppear">
+  <div class="modal-dialog">
+    <div class="modal-content positionInvalidProjectProfilePopup">
+      <div class="modal-body settingPopupHeight add-profile-buttons-position">
+        <p>Project Profile has been successfully updated.</p>
+        <input type="button" class="btn btn-default popupButtonLength" value="OK" (click)="closeValidUpdateProjectProfilePopUp()"/>
+      </div>
+    </div>
+  </div>
+</div>
