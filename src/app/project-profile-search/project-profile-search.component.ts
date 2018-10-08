@@ -20,6 +20,7 @@ export class ProjectProfileSearchComponent implements OnInit {
   editProfile: ProjectProfile;
   editProjProfilePopulate: ProjectProfile = new ProjectProfile();
   isInvalidProjectProfilePopupAppear: boolean;
+  projectQueryString: string = '';
 
   constructor(projectProfileSearchFormBuilder: FormBuilder, private projectProfileSearchService: ProjectProfileSearchService) {
     this.projectProfileSearchFormGroup = projectProfileSearchFormBuilder.group({
@@ -44,8 +45,9 @@ export class ProjectProfileSearchComponent implements OnInit {
   }
 
   searchButtonAction(projectSearchProfile: ProjectProfile) {
+    this.convertProjectSearchProfileToQueryString(projectSearchProfile);
     this.projectProfiles = [];
-    this.projectProfileSearchService.getProfileProfileForSearch(projectSearchProfile).then(data => {
+    this.projectProfileSearchService.getProfileProfileForSearch(this.projectQueryString).then(data => {
         this.projectProfiles = data;
         if (this.projectProfiles == null || this.projectProfiles.length == 0) {
           this.isInvalidProjectProfilePopupAppear = true;
@@ -55,6 +57,27 @@ export class ProjectProfileSearchComponent implements OnInit {
         this.isInvalidProjectProfilePopupAppear = true;
       }
     );
+  }
+
+  convertProjectSearchProfileToQueryString(projectSearchProfile: ProjectProfile) {
+    if (this.isInputNotEmptyOrUndefined(projectSearchProfile.projectProfileDeliveryLead)) {
+      this.projectQueryString += 'deliverylead=' + projectSearchProfile.projectProfileDeliveryLead + ',';
+    }
+    if (this.isInputNotEmptyOrUndefined(projectSearchProfile.projectProfileIndustryGroup)) {
+      this.projectQueryString += 'industrygroup=' + projectSearchProfile.projectProfileIndustryGroup + ',';
+    }
+    if (this.isInputNotEmptyOrUndefined(projectSearchProfile.projectProfileName)) {
+      this.projectQueryString += 'profilename=' + projectSearchProfile.projectProfileName + ',';
+    }
+    if (this.isInputNotEmptyOrUndefined(projectSearchProfile.projectProfileProjectLocation)) {
+      this.projectQueryString += 'projectlocation=' + projectSearchProfile.projectProfileProjectLocation + ',';
+    }
+    if (this.isInputNotEmptyOrUndefined(projectSearchProfile.projectProfileSeniorExec)) {
+      this.projectQueryString += 'seniorexec=' + projectSearchProfile.projectProfileSeniorExec + ',';
+    }
+    if (this.isInputNotEmptyOrUndefined(projectSearchProfile.projectProfileSubTeamName)) {
+      this.projectQueryString += 'subteamname=' + projectSearchProfile.projectProfileSubTeamName + ',';
+    }
   }
 
   closeInvalidProjectProfilePopUp() {
@@ -87,5 +110,9 @@ export class ProjectProfileSearchComponent implements OnInit {
   openProjectProfileEditScreen(row: ProjectProfile) {
     this.isProjProfileEditAppear = true;
     this.editProfile = row;
+  }
+
+  isInputNotEmptyOrUndefined(input: string) {
+    return (input != undefined && input.length > 0) || input != '';
   }
 }

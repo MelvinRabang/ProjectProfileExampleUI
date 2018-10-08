@@ -9,12 +9,12 @@ import { Observable } from 'rxjs/Observable';
 export class ProjectProfileSearchService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
-    private searchProjectProfileUrl = '/api/searchProjectProfiles';
+    private searchProjectProfileUrl = 'api/projectprofile';
 
     constructor(private http: Http) { }
 
-    getProfileProfileForSearch(projectSearchProfile: ProjectProfile): Promise<ProjectProfile[]>  {
-        return this.http.post(this.searchProjectProfileUrl, projectSearchProfile).toPromise()
+    getProfileProfileForSearch(projectSearchProfile: string): Promise<ProjectProfile[]>  {
+        return this.http.get(this.searchProjectProfileUrl + '?query=' + projectSearchProfile).toPromise()
             .then(res => res.json() as ProjectProfile[]);
     }
 }
