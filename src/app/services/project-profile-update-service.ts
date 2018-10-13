@@ -9,18 +9,13 @@ import { Observable } from 'rxjs/Observable';
 export class ProjectProfileUpdateService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
-    private projectProfileUrl = '/api/projectprofile';
+    private projectProfileUrl = '/api/projectprofiles';
 
     constructor(private http: Http) { }
 
     saveProjectProfile(projectUpdateProfile: ProjectProfile): Promise<ProjectProfile> {
         return this.http.post(this.projectProfileUrl, projectUpdateProfile).toPromise()
             .then(res => res.json() as ProjectProfile);
-    }
-
-    isProjectProfileDoesNotExist(projectUpdateProfile: ProjectProfile) : Promise<boolean> {
-        return this.http.post(this.projectProfileUrl, projectUpdateProfile).toPromise()
-            .then(res => res.json() as boolean);
     }
 
     deleteProjectProfile(projectProfileDeleted: ProjectProfile) : Promise<number> {

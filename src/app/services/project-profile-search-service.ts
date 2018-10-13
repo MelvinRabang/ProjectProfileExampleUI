@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 export class ProjectProfileSearchService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
-    private searchProjectProfileUrl = 'api/projectprofile';
+    private searchProjectProfileUrl = 'api/projectprofiles';
 
     constructor(private http: Http) { }
 
